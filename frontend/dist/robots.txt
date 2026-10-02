@@ -1,0 +1,17 @@
+# Noor & Bloom Flower Boutique
+# VITE_SITE_URL is not set: replace every occurrence of https://REPLACE-WITH-YOUR-DOMAIN below, or set VITE_SITE_URL in .env and rebuild.
+
+User-agent: *
+Allow: /
+
+# Private / account pages — not for search engines
+Disallow: /login
+Disallow: /register
+Disallow: /checkout
+Disallow: /dashboard
+Disallow: /admin
+
+# Alternate / placeholder pages (kept out of the index)
+Disallow: /extra
+
+Sitemap: https://REPLACE-WITH-YOUR-DOMAIN/sitemap.xml
