@@ -1,0 +1,602 @@
+/* ==========================================================================
+   Responsive: 360px – 1024px range (mobile-first, tablet breakpoints)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .home-one-banner{
+    min-height: 600px;
+  }
+  .home-two-banner{
+    min-height: 600px;
+  }
+  .home-two-banner{
+    min-height: 600px;
+  }
+  .luxury-hero-layout{
+    grid-template-columns: 1fr;
+  }
+  .luxury-hero-panel{
+    justify-content: flex-start;
+  }
+  .hero-copy h1{
+    font-size: 30px;
+  }
+  .grid-4{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .footer-main-grid{
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+  }
+  .footer-col-lifestyle{
+    grid-column: 1/-1;
+  }
+  .pd-layout{
+    grid-template-columns: 1fr;
+  }
+  .pd-media{
+    position: static;
+  }
+  .roadmap-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .plans-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .vitality-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .corporate-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .mood-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .journey-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 860px) {
+  .about-journal{
+    grid-template-columns: 1fr;
+  }
+  .about-journal-image{
+    min-height: 340px;
+  }
+  .about-composition-layout{
+    grid-template-columns: 1fr;
+  }
+  .site-header .container{
+    padding-inline: 1rem;
+  }
+  .header-actions{
+    gap: 0.45rem;
+  }
+  .header-actions .btn{
+    padding-inline: 0.8rem;
+  }
+  .hero-copy h1{
+    font-size: 30px;
+  }
+  .hero-art{
+    order: -1;
+    max-width: 340px;
+    margin-inline: auto;
+  }
+  .split{
+    grid-template-columns: 1fr;
+  }
+  .split-media{
+    order: -1;
+    max-width: 380px;
+    margin-inline: auto;
+    width: 100%;
+  }
+  .grid-3{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-4{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gallery-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .luxury-hero-panel{
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .luxury-social-stack{
+    flex-direction: row;
+  }
+  .studio-pulse{
+    grid-template-columns: 1fr;
+  }
+  .pulse-image{
+    min-height: 300px;
+  }
+  .vitality-grid{
+    grid-template-columns: 1fr;
+  }
+  .plans-grid{
+    grid-template-columns: 1fr;
+  }
+  .spotlight-card{
+    grid-template-columns: 1fr;
+  }
+  .spotlight-media{
+    min-height: 240px;
+  }
+  .anatomy-layout{
+    grid-template-columns: 1fr;
+  }
+  .radar-grid{
+    grid-template-columns: 1fr;
+  }
+  .estimator-layout{
+    grid-template-columns: 1fr;
+  }
+  .corporate-grid{
+    grid-template-columns: 1fr;
+  }
+  .mood-grid{
+    grid-template-columns: 1fr;
+  }
+  .journey-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-one-banner{
+    min-height: 600px;
+  }
+  .home-two-banner{
+    min-height: 600px;
+  }
+  .about-seasonal-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .about-composition-layout{
+    grid-template-columns: 1fr 1fr;
+  }
+  .about-balance-panel{
+    padding: 1.2rem;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .home-one-banner{
+    min-height: 640px;
+  }
+  .home-two-banner{
+    min-height: 640px;
+  }
+  .about-composition-layout,
+  .about-seasonal-grid,
+  .about-palette-grid{
+    grid-template-columns: 1fr;
+  }
+  .about-studio-note-layout{
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .about-balance-list li{
+    align-items: flex-start;
+  }
+  .grid-2,
+  .grid-3,
+  .grid-4{
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .split,
+  .pd-layout,
+  .studio-pulse{
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .container,
+  .container > *{
+    min-width: 0;
+  }
+  .btn{
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+@media (max-width: 680px) {
+  .main-nav ul{
+    gap: 0;
+  }
+  .grid-2{
+    grid-template-columns: 1fr;
+  }
+  .grid-3,
+  .grid-4{
+    grid-template-columns: 1fr;
+  }
+  .form-grid{
+    grid-template-columns: 1fr;
+  }
+  .promo-banner{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .promo-banner form{
+    max-width: 100%;
+  }
+  .footer-main-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-col-brand{
+    grid-column: 1/-1;
+  }
+  .footer-col-lifestyle{
+    grid-column: 1/-1;
+  }
+  .hero-actions{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions .btn{
+    width: 100%;
+  }
+  .hero-stats{
+    gap: 1.2rem;
+  }
+  .stat-strip{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pulse-tools{
+    grid-template-columns: 1fr;
+  }
+  .roadmap-grid{
+    grid-template-columns: 1fr;
+  }
+  .harmony-grid{
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .container{
+    padding-inline: 1.1rem;
+  }
+  .site-header .container{
+    gap: 0.8rem;
+  }
+  .header-actions{
+    gap: 0.4rem;
+  }
+  .header-actions .btn-ghost{
+    display: none;
+  }
+  .icon-btn{
+    width: 38px;
+    height: 38px;
+  }
+  .gallery-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-stats{
+    gap: 1.1rem;
+  }
+  .luxury-hero-panel{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .luxury-social-stack{
+    flex-direction: row;
+  }
+  .luxury-hero-card{
+    width: 100%;
+  }
+  .back-to-top{
+    bottom: 1.2rem;
+    inset-inline-end: 1.2rem;
+  }
+  .footer-quicklinks-nav{
+    gap: 0.7rem;
+  }
+  .quicklink-divider{
+    display: none;
+  }
+  .footer-bottom-bar{
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  .site-footer .container{
+    padding-inline: 1.1rem;
+  }
+  .footer-main-grid{
+    gap: 2.2rem;
+  }
+}
+@media (max-width: 480px) {
+  .chart-row{
+    grid-template-columns: 58px 1fr 24px;
+    gap: 0.45rem;
+    font-size: 12px;
+  }
+  .hero-copy h1{
+    font-size: 26px;
+  }
+  .hero-copy .lede{
+    font-size: 14px;
+  }
+  .luxury-hero-tag{
+    font-size: 14px;
+    padding: 0.6rem 0.9rem;
+  }
+  .hero-stats div strong{
+    font-size: 22px;
+  }
+  .luxury-hero-value{
+    font-size: 42px;
+  }
+  .story-slide{
+    grid-template-columns: 1fr;
+  }
+  .story-slide-media{
+    min-height: 200px;
+    order: -1;
+  }
+  .footer-main-grid{
+    grid-template-columns: 1fr;
+  }
+  .spotlight-body{
+    padding: 1.4rem;
+  }
+}
+@media (max-width: 420px) {
+  .container{
+    padding-inline: 1rem;
+  }
+  .site-header .container{
+    padding-block: 0.8rem;
+  }
+  .header-actions .btn{
+    display: none;
+  }
+  .icon-btn{
+    width: 36px;
+    height: 36px;
+  }
+  .icon-btn svg{
+    width: 17px;
+    height: 17px;
+  }
+  .brand{
+    font-size: 17px;
+  }
+  .about-journal-points{
+    grid-template-columns: 1fr;
+  }
+  .grid-3,
+  .grid-4,
+  .gallery-grid{
+    grid-template-columns: 1fr;
+  }
+  .stat-strip{
+    grid-template-columns: 1fr;
+  }
+  .hero-actions .btn{
+    flex: 1;
+  }
+  .hero-stats{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 375px) {
+  .container{
+    padding-inline: 0.9rem;
+  }
+  h1{
+    font-size: 24px;
+  }
+  h2{
+    font-size: 24px;
+  }
+  h3{
+    font-size: 18px;
+  }
+  .hero-copy h1{
+    font-size: 24px;
+  }
+  .btn{
+    padding: 0.8rem 1.5rem;
+    font-size: 14px;
+  }
+  .luxury-hero-card{
+    padding: 1.5rem 1rem;
+  }
+  .luxury-hero-value{
+    font-size: 36px;
+  }
+  .gallery-grid{
+    grid-template-columns: 1fr;
+  }
+  .luxury-social-stack a{
+    padding: 0.5rem 0.7rem;
+    font-size: 12px;
+  }
+  .estimator-options{
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 320px) {
+  .container{
+    padding-inline: 0.8rem;
+  }
+  h1{
+    font-size: 20px;
+  }
+  h2{
+    font-size: 20px;
+  }
+  h3{
+    font-size: 16px;
+  }
+  .hero-copy h1{
+    font-size: 20px;
+  }
+  .hero-copy .lede{
+    font-size: 13px;
+  }
+  .btn{
+    padding: 0.7rem 1.2rem;
+    font-size: 13px;
+  }
+  .brand{
+    font-size: 15px;
+  }
+  .luxury-hero-card{
+    padding: 1.2rem 0.8rem;
+  }
+  .luxury-hero-value{
+    font-size: 32px;
+  }
+  .luxury-hero-tag{
+    font-size: 12px;
+    padding: 0.5rem 0.7rem;
+  }
+  .hero-stats div strong{
+    font-size: 18px;
+  }
+  .hero-stats div span{
+    font-size: 11px;
+  }
+  .card-body{
+    padding: 1rem;
+  }
+  .form-card{
+    padding: 1.2rem;
+  }
+  .input{
+    padding: 0.7rem 0.8rem;
+    font-size: 14px;
+  }
+  .luxury-social-stack a{
+    padding: 0.4rem 0.6rem;
+    font-size: 11px;
+  }
+  .header-actions .btn{
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+  }
+  .icon-btn{
+    width: 36px;
+    height: 36px;
+  }
+  .icon-btn svg{
+    width: 17px;
+    height: 17px;
+  }
+  .nav-toggle svg{
+    width: 20px;
+    height: 20px;
+  }
+  .footer-main-grid{
+    grid-template-columns: 1fr;
+    text-align: start;
+  }
+  .site-footer .container{
+    padding-inline: 0.8rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-one-banner{
+    min-height: 680px;
+  }
+  .home-two-banner{
+    min-height: 680px;
+  }
+  .luxury-hero{
+    padding-block: 3rem;
+  }
+  .luxury-hero-layout{
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 1.25rem;
+  }
+  .luxury-hero-panel{
+    flex-direction: column;
+  }
+  .luxury-social-stack{
+    display: none;
+  }
+  .luxury-hero-card{
+    width: 100%;
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .home-one-banner{
+    min-height: 780px;
+  }
+  .home-two-banner{
+    min-height: 780px;
+  }
+  .home-one-banner{
+    padding-block: 1.5rem;
+  }
+  .luxury-hero-layout{
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.8rem;
+  }
+  .luxury-hero-panel{
+    margin-top: 0;
+  }
+  .luxury-social-stack{
+    display: none;
+  }
+  .luxury-hero-card{
+    padding: 0.9rem 0.8rem;
+    border-radius: 18px;
+  }
+  .luxury-hero-value{
+    font-size: 30px;
+  }
+  .luxury-hero-avatars{
+    margin: 0.45rem 0;
+  }
+  .avatar{
+    width: 36px;
+    height: 36px;
+  }
+  .luxury-hero-quote{
+    font-size: 13px;
+    margin-top: 0.25rem;
+  }
+  .hero-stats{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .hero-stats div strong{
+    font-size: 16px;
+  }
+  .hero-stats div span{
+    font-size: 10px;
+  }
+}
+
+/* ==========================================================================
+   Tablet: keep the inline nav but tighten it so header + actions fit
+   ========================================================================== */
+@media (min-width: 861px) and (max-width: 1024px) {
+  .site-header .container{
+    gap: 1rem;
+  }
+  .main-nav ul{
+    gap: 1.1rem;
+  }
+  .header-actions{
+    gap: 0.5rem;
+  }
+  .header-actions .btn{
+    padding-inline: 0.75rem;
+  }
+  .header-actions .btn-ghost{
+    display: none;
+  }
+}
