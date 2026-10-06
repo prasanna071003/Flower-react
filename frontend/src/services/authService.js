@@ -22,9 +22,30 @@ export async function loginUser({ email, password, rememberMe }) {
   return data;
 }
 
+export async function requestPasswordReset(email) {
+  return apiRequest("/auth/forgot-password", {
+    method: "POST",
+    auth: false,
+    body: { email },
+  });
+}
+
+export async function resetPassword({ token, password }) {
+  return apiRequest("/auth/reset-password", {
+    method: "POST",
+    auth: false,
+    body: { token, password },
+  });
+}
+
 export async function fetchCurrentUser() {
   const payload = await apiRequest("/auth/me");
   return (payload && payload.data && payload.data.user) || null;
+}
+
+export async function fetchCustomers() {
+  const payload = await apiRequest("/auth/customers");
+  return payload.data;
 }
 
 export function logoutUser() {

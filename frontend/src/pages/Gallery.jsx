@@ -187,7 +187,7 @@ export default function Gallery() {
                       </span>
                     </div>
                     <blockquote className="spotlight-quote">
-                      "Sculptural, elegant, and uncompromisingly modern. Crimson
+                      "Sculptural, elegant, and uncompromisingly modern. Noor &
                       Bloom elevated our brand experience."
                       <footer>— Maya R., Creative Director</footer>
                     </blockquote>
@@ -290,7 +290,7 @@ export default function Gallery() {
               <span className="rule"></span>Design Theory
               <span className="rule"></span>
             </div>
-            <h2>The anatomy of a Crimson Bloom composition</h2>
+            <h2>The anatomy of a Noor & Bloom composition</h2>
             <p>
               We balance natural geometry, organic flow, and precise color
               harmonies so every bouquet feels sculptural, breathing, and

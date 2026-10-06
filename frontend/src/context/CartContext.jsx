@@ -6,6 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { normalizeFlowerImage } from "../utils/flowerImages";
 
 const CartContext = createContext(null);
 const CART_KEY = "cb-cart";
@@ -23,6 +24,7 @@ function readStoredCart() {
       )
       .map((item) => ({
         ...item,
+        image: normalizeFlowerImage(item.image || ""),
         price: Number(item.price) || 0,
         quantity: Number(item.quantity) || 1,
       }));

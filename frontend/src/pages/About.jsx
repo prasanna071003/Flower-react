@@ -33,7 +33,7 @@ export default function About() {
             </div>
             <h2>Started at a kitchen table, still run that way</h2>
             <p>
-              Crimson Bloom began in 2016 as a single flower bucket at a weekend
+              Noor & Bloom began in 2016 as a single flower bucket at a weekend
               market stall. What people kept coming back for wasn't a catalogue
               of set bouquets — it was arrangements built around what looked
               good together that morning, and around what the moment actually
@@ -65,7 +65,7 @@ export default function About() {
               <span className="rule"></span>Design Theory
               <span className="rule"></span>
             </div>
-            <h2>The anatomy of a Crimson Bloom composition</h2>
+            <h2>The anatomy of a Noor & Bloom composition</h2>
             <p>
               We balance natural geometry, organic flow, and precise color
               harmonies so every bouquet feels sculptural, breathing, and

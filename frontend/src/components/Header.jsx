@@ -20,7 +20,7 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <Link to="/" className="brand">
-          Crimson <span>Bloom</span>
+          Noor <span>& Bloom</span>
         </Link>
         <button
           className="nav-toggle"

@@ -4,6 +4,7 @@ import "../styles/Login.css";
 import { usePageEffects } from "../hooks/usePageEffects";
 import { useAuth } from "../context/AuthContext";
 import SEO from "../components/SEO";
+import AuthThemeToggle from "../components/AuthThemeToggle";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,7 +13,12 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [note, setNote] = useState("");
+  const [noteIsError, setNoteIsError] = useState(false);
+  const [note, setNote] = useState(
+    location.state?.passwordReset
+      ? "Password updated successfully. Sign in with your new password."
+      : "",
+  );
   const [busy, setBusy] = useState(false);
 
   usePageEffects();
@@ -22,6 +28,7 @@ export default function Login() {
     if (busy) return;
     setBusy(true);
     setNote("");
+    setNoteIsError(false);
     try {
       const user = await login({ email, password, rememberMe });
       setNote("Login successful! Redirecting...");
@@ -29,6 +36,7 @@ export default function Login() {
       navigate(from || (user.role === "admin" ? "/admin" : "/dashboard"));
     } catch (err) {
       setNote(err.message);
+      setNoteIsError(true);
     } finally {
       setBusy(false);
     }
@@ -37,11 +45,12 @@ export default function Login() {
   return (
     <>
       <SEO title="Login" noindex />
-      <div className="auth-container">
+      <main className="auth-screen">
+        <AuthThemeToggle />
         <Link to="/" className="auth-logo">
-          Crimson <span>Bloom</span>
+          Noor <span>& Bloom</span>
         </Link>
-        <div className="form-card" style={{ maxWidth: "480px", width: "100%" }}>
+        <section className="form-card auth-card">
           <div className="section-head center" style={{ marginBottom: "2rem" }}>
             <div className="eyebrow">
               <span className="rule"></span>Welcome Back
@@ -101,25 +110,19 @@ export default function Login() {
                 />{" "}
                 Remember me
               </label>
-              <a href="#" style={{ fontSize: "14px", color: "var(--brand)" }}>
+              <Link to="/forgot-password" className="auth-link">
                 Forgot password?
-              </a>
+              </Link>
             </div>
             <button
               type="submit"
               className="btn btn-primary"
               style={{ width: "100%" }}
             >
-              Login
+              {busy ? "Signing in…" : "Login"}
             </button>
             {note && (
-              <p
-                style={{
-                  color: "var(--brand)",
-                  marginTop: "1rem",
-                  fontWeight: 500,
-                }}
-              >
+              <p className={`auth-message${noteIsError ? " is-error" : ""}`} role={noteIsError ? "alert" : "status"}>
                 {note}
               </p>
             )}
@@ -139,8 +142,8 @@ export default function Login() {
               </Link>
             </p>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 }

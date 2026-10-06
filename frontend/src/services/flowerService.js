@@ -1,4 +1,9 @@
 import { apiRequest } from "./api";
+import { normalizeFlowerImage } from "../utils/flowerImages";
+
+function normalizeFlower(flower) {
+  return { ...flower, image: normalizeFlowerImage(flower.image) };
+}
 
 export async function fetchFlowers(params = {}) {
   const query = new URLSearchParams();
@@ -12,22 +17,27 @@ export async function fetchFlowers(params = {}) {
 
   const qs = query.toString();
   const payload = await apiRequest(`/flowers${qs ? `?${qs}` : ""}`, { auth: false });
-  return (payload && payload.data) || { flowers: [], count: 0 };
+  const data = (payload && payload.data) || { flowers: [], count: 0 };
+  return {
+    ...data,
+    flowers: Array.isArray(data.flowers) ? data.flowers.map(normalizeFlower) : [],
+  };
 }
 
 export async function fetchFlowerById(id) {
   const payload = await apiRequest(`/flowers/${id}`, { auth: false });
-  return (payload && payload.data && payload.data.flower) || null;
+  const flower = payload && payload.data && payload.data.flower;
+  return flower ? normalizeFlower(flower) : null;
 }
 
 export async function createFlower(flower) {
   const payload = await apiRequest("/flowers", { method: "POST", body: flower });
-  return payload.data.flower;
+  return normalizeFlower(payload.data.flower);
 }
 
 export async function updateFlower(id, updates) {
   const payload = await apiRequest(`/flowers/${id}`, { method: "PUT", body: updates });
-  return payload.data.flower;
+  return normalizeFlower(payload.data.flower);
 }
 
 export async function deleteFlower(id) {

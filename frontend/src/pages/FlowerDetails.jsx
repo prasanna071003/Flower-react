@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { usePageEffects } from "../hooks/usePageEffects";
 import { fetchFlowerById, fetchFlowers } from "../services/flowerService";
 import { useCart } from "../context/CartContext";
@@ -22,13 +22,14 @@ const WRAP_SWATCHES = [
 ];
 
 const TABS = [
-  // { id: "details", label: "Details" },
-  // { id: "care", label: "Care Guide" },
-  // { id: "delivery", label: "Delivery" },
+  { id: "details", label: "Product details" },
+  { id: "care", label: "Care guide" },
+  { id: "delivery", label: "Delivery" },
 ];
 
 export default function FlowerDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { addItem } = useCart();
   const [flower, setFlower] = useState(null);
   const [pairs, setPairs] = useState([]);
@@ -43,6 +44,11 @@ export default function FlowerDetails() {
   function handleAddToCart() {
     addItem(flower, qty);
     setCartNote(`Added ${qty} × ${flower.name} to your cart.`);
+  }
+
+  function handleBuyNow() {
+    addItem(flower, qty);
+    navigate("/checkout");
   }
 
   usePageEffects();
@@ -161,6 +167,10 @@ export default function FlowerDetails() {
       url: absoluteUrl(`/flower-details/${id}`),
     },
   };
+  const productImages = [
+    flower.image,
+    ...GALLERY_THUMBS.filter((image) => image !== flower.image),
+  ];
 
   return (
     <>
@@ -188,22 +198,34 @@ export default function FlowerDetails() {
           <div className="pd-layout">
             <div className="pd-media">
               <div
-                className="bloom-tile"
-                style={{
-                  "--card-photo": `url('${GALLERY_THUMBS[activeThumb]}')`,
-                }}
+                className="bloom-tile pd-main-image"
               >
+                <img
+                  className="pd-main-photo"
+                  src={productImages[activeThumb]}
+                  alt={flower.name}
+                />
                 {flower.badge ? (
                   <span className="tile-badge">{flower.badge}</span>
                 ) : null}
               </div>
               <div className="pd-thumbs">
-                {GALLERY_THUMBS.map((src, index) => (
+                {productImages.map((src, index) => (
                   <div
                     key={src}
                     className={`bloom-tile${index === activeThumb ? " is-active" : ""}`}
                     onClick={() => setActiveThumb(index)}
                     style={{ "--card-photo": `url('${src}')` }}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Show product image ${index + 1}`}
+                    aria-pressed={index === activeThumb}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setActiveThumb(index);
+                      }
+                    }}
                   ></div>
                 ))}
               </div>
@@ -244,6 +266,10 @@ export default function FlowerDetails() {
                   <s>{formatPrice(flower.compareAtPrice)}</s>
                 ) : null}
               </div>
+              <p className="pd-product-meta">
+                <span><strong>Category</strong> {flower.category}</span>
+                <span><strong>Availability</strong> Available to order</span>
+              </p>
               {flower.description ? <p>{flower.description}</p> : null}
               {flower.tags && flower.tags.length ? (
                 <div className="tag-row mt-2">
@@ -299,6 +325,9 @@ export default function FlowerDetails() {
                 <button className="btn btn-primary" onClick={handleAddToCart}>
                   Add to Cart — {formatPrice(flower.price * qty)}
                 </button>
+                <button className="btn btn-outline" onClick={handleBuyNow}>
+                  Buy Now
+                </button>
                 <Link to="/services#custom" className="btn btn-outline">
                   Customise This Bouquet
                 </Link>
@@ -330,8 +359,9 @@ export default function FlowerDetails() {
                 <div
                   key={tab.id}
                   className={`pd-tab-panel${activeTab === tab.id ? " is-active" : ""}`}
+                  role="tabpanel"
                 >
-                  <p>{flower[tab.id]}</p>
+                  <p>{flower[tab.id] || "Information for this arrangement will be available soon."}</p>
                 </div>
               ))}
             </div>

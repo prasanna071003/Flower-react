@@ -16,11 +16,13 @@ import {
 } from "../services/contactService";
 import { formatDate, formatPrice } from "../utils/format";
 import SEO from "../components/SEO";
+import { fetchCustomers } from "../services/authService";
 
 const TABS = [
   { id: "overview", label: "Overview" },
   { id: "flowers", label: "Flowers" },
   { id: "orders", label: "Orders" },
+  { id: "users", label: "Users" },
   { id: "messages", label: "Messages" },
 ];
 const FLOWER_CATEGORIES = [
@@ -62,6 +64,7 @@ export default function Admin() {
   const [flowers, setFlowers] = useState([]);
   const [orders, setOrders] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [orderFilter, setOrderFilter] = useState("all");
@@ -81,8 +84,9 @@ export default function Admin() {
     Promise.allSettled([
       fetchFlowers(),
       fetchAllOrders(),
+      fetchCustomers(),
       fetchContactMessages(),
-    ]).then(([flowersResult, ordersResult, messagesResult]) => {
+    ]).then(([flowersResult, ordersResult, customersResult, messagesResult]) => {
       if (!active) return;
       const failures = [];
       if (flowersResult.status === "fulfilled")
@@ -91,6 +95,9 @@ export default function Admin() {
       if (ordersResult.status === "fulfilled")
         setOrders(ordersResult.value.orders || []);
       else failures.push(ordersResult.reason.message);
+      if (customersResult.status === "fulfilled")
+        setCustomers(customersResult.value.users || []);
+      else failures.push(customersResult.reason.message);
       if (messagesResult.status === "fulfilled")
         setMessages(messagesResult.value.messages || []);
       else failures.push(messagesResult.reason.message);
@@ -319,6 +326,7 @@ export default function Admin() {
                 {item.id === "orders" && pendingOrders
                   ? ` (${pendingOrders})`
                   : ""}
+                {item.id === "users" ? ` (${customers.length})` : ""}
                 {item.id === "messages" && newMessages
                   ? ` (${newMessages})`
                   : ""}
@@ -335,6 +343,41 @@ export default function Admin() {
             >
               {error}
             </p>
+          )}
+
+          {!loading && tab === "users" && (
+            <section aria-labelledby="admin-users-heading">
+              <div className="section-head">
+                <div className="eyebrow">
+                  <span className="rule"></span>Customer accounts
+                </div>
+                <h2 id="admin-users-heading">Recent customers</h2>
+                <p>Showing up to the 100 most recently created customer accounts.</p>
+              </div>
+              {customers.length === 0 ? (
+                <p>No customer accounts to show yet.</p>
+              ) : (
+                <div className="admin-users-list">
+                  {customers.map((customer) => (
+                    <article className="admin-users-row" key={customer._id}>
+                      <div className="admin-user-avatar" aria-hidden="true">
+                        {(customer.firstName || customer.email || "?").slice(0, 1).toUpperCase()}
+                      </div>
+                      <div className="admin-user-identity">
+                        <strong>
+                          {[customer.firstName, customer.lastName].filter(Boolean).join(" ") || "Customer"}
+                        </strong>
+                        <span>{customer.email}</span>
+                      </div>
+                      <div className="admin-user-contact">
+                        <span>{customer.phone || "No phone added"}</span>
+                        <span>Joined {formatDate(customer.createdAt)}</span>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </section>
           )}
           {actionNote && (
             <p
@@ -353,7 +396,7 @@ export default function Admin() {
 
           {!loading && tab === "overview" && (
             <>
-              <div className="stat-strip">
+              <div className="stat-strip admin-overview-stats">
                 <div>
                   <strong>{flowers.length}</strong>
                   <span>Flowers in catalogue</span>
@@ -361,6 +404,10 @@ export default function Admin() {
                 <div>
                   <strong>{orders.length}</strong>
                   <span>Orders placed</span>
+                </div>
+                <div>
+                  <strong>{customers.length}</strong>
+                  <span>Recent customers</span>
                 </div>
                 <div>
                   <strong>{pendingOrders}</strong>
@@ -656,7 +703,7 @@ export default function Admin() {
                         required
                         value={flowerForm.image}
                         onChange={updateFlowerField("image")}
-                        placeholder="/images/flower1.jpg"
+                        placeholder="/images/inside.jpg"
                       />
                     </div>
                     <div className="field full">

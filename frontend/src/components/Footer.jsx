@@ -21,7 +21,7 @@ export default function Footer() {
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
               </svg>
               <span>
-                Crimson <strong>Bloom</strong>
+                Noor <strong>& Bloom</strong>
               </span>
             </Link>
             <p className="footer-quote">
@@ -168,7 +168,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright and Social Links */}
         <div className="footer-bottom-bar">
           <div className="footer-copyright">
-            © 2026 Crimson Bloom Flower Boutique. All Rights Reserved.
+            © 2026 Noor & Bloom Flower Boutique. All Rights Reserved.
           </div>
           <div className="footer-actions-right">
             <div className="footer-social-stack">

@@ -59,7 +59,7 @@ export default function Home() {
               for your softest moments.
             </h1>
             <p className="lede">
-              Crimson Bloom grows every arrangement around the season's best
+              Noor & Bloom grows every arrangement around the season's best
               stems — from everyday bunches to wedding-scale florals — cut,
               tied, and delivered the same day.
             </p>
@@ -193,7 +193,7 @@ export default function Home() {
           ></div>
           <div>
             <div className="eyebrow">
-              <span className="rule"></span>Why Crimson Bloom
+              <span className="rule"></span>Why Noor & Bloom
             </div>
             <h2>Every stem is chosen your way.</h2>
             <p>

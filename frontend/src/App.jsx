@@ -10,6 +10,8 @@ import Services from "./pages/Services";
 import Extra from "./pages/Extra";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Checkout from "./pages/Checkout";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
@@ -62,6 +64,8 @@ export default function App() {
       {/* Standalone auth pages (no header/footer, own layout) */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
     </Routes>
   );
 }

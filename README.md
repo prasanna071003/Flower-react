@@ -1,4 +1,4 @@
-# Crimson Bloom — Flower Boutique
+# Noor & Bloom — Flower Boutique
 
 Full-stack flower boutique: React 18 + Vite SPA ("Noor & Bloom" brand) backed by an Express 5 + MongoDB Atlas API.
 
@@ -19,7 +19,7 @@ flower-react/
 │   ├── models/            User, Flower, Order, ContactMessage schemas
 │   ├── routes/            /api route definitions
 │   ├── middleware/        JWT auth + RBAC, validators, rate limiter, error handler
-│   ├── utils/             seed script (admin + 8 flowers), helpers
+│   ├── utils/             seed script (admin + 8 flowers), helpers and reset email
 │   ├── server.js          app entry
 │   ├── .env               MONGO_URI, JWT_SECRET, CLIENT_URL, PORT
 │   └── package.json
@@ -44,6 +44,12 @@ MONGO_URI=<MongoDB Atlas connection string>
 JWT_SECRET=<long random string>
 CLIENT_URL=http://localhost:5173
 PORT=5000
+SMTP_HOST=<your SMTP host>
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=<your SMTP username>
+SMTP_PASSWORD=<your SMTP password>
+SMTP_FROM=Noor & Bloom <no-reply@your-domain>
 ```
 
 ```bash
@@ -75,6 +81,8 @@ npm run build   # production build → dist/
 
 ## Notes
 
+- Password recovery sends one-time reset links through SMTP. Configure the `SMTP_*` values above and set `CLIENT_URL` to the deployed HTTPS frontend origin; links expire after 30 minutes.
+- Registration social-provider buttons remain disabled until OAuth providers and their server-side callbacks are configured.
 - Auth: JWT Bearer tokens (stored under `cb-token`), roles `customer` / `admin`; admin-only routes under `/admin`.
 - Orders: prices are always recomputed server-side from the DB; payment is demo / pay-on-delivery.
 - CORS allowlists a single frontend origin (`CLIENT_URL`) — the dev server must run on port 5173.
