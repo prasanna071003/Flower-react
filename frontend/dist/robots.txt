@@ -1,5 +1,5 @@
 # Noor & Bloom Flower Boutique
-# VITE_SITE_URL is not set: replace every occurrence of https://REPLACE-WITH-YOUR-DOMAIN below, or set VITE_SITE_URL in .env and rebuild.
+# Generated at build time from VITE_SITE_URL (http://localhost:5176).
 
 User-agent: *
 Allow: /
@@ -14,4 +14,4 @@ Disallow: /admin
 # Alternate / placeholder pages (kept out of the index)
 Disallow: /extra
 
-Sitemap: https://REPLACE-WITH-YOUR-DOMAIN/sitemap.xml
+Sitemap: http://localhost:5176/sitemap.xml

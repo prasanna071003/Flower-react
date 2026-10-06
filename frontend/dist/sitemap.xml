@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Noor & Bloom Flower Boutique — XML sitemap.
-  VITE_SITE_URL is not set: replace every occurrence of https://REPLACE-WITH-YOUR-DOMAIN below, or set VITE_SITE_URL in .env and rebuild.
+  Generated at build time from VITE_SITE_URL (http://localhost:5176).
   Flower detail pages (/flower-details/:id) are generated from the database
   and change over time, so they are not listed here. Search engines will
   discover them by crawling the /flowers collection pages.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/</loc></url>
-  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/about</loc></url>
-  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/flowers</loc></url>
-  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/services</loc></url>
-  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/gallery</loc></url>
-  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/contact</loc></url>
+  <url><loc>http://localhost:5176/</loc></url>
+  <url><loc>http://localhost:5176/about</loc></url>
+  <url><loc>http://localhost:5176/flowers</loc></url>
+  <url><loc>http://localhost:5176/services</loc></url>
+  <url><loc>http://localhost:5176/gallery</loc></url>
+  <url><loc>http://localhost:5176/contact</loc></url>
 </urlset>
